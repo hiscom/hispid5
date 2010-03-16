@@ -28,8 +28,8 @@ HISPID 5 extensions used in place of their ABCD counterparts.
 
 == Notes ==
 
-The latest schema can always be downloaded from the subversion repository at
-http://big.sourceforge.net.
+The latest schema can always be downloaded from the project site at
+https://code.google.com/p/hispid/.
 
 Errors in Eclipse's XML Schema editor like "cvc-elt.1: Cannot find the
 declaration of element 'DataSets'" can be addressed by following the
