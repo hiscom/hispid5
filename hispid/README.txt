@@ -1,8 +1,8 @@
 = HISPID 5 README =
 
 HISPID 5, documented more fully at http://hiscom.chah.org.au/wiki/HISPID_5
-represents a major change to the way Australian herbaria will transfer data. It
-is an XML Schema based on the ABCD Schema developed by TDWG, the global
+represents a major change to the way Australian herbaria transfer data. It is an
+XML Schema based on the ABCD Schema developed through TDWG, the global
 biodiversity informatics standards group, http://www.tdwg.org/activities/abcd.
 
 == Schema ==
