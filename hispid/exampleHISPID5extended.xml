@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSets
+	xmlns="http://www.chah.org.au/schemas/hispid/5" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.chah.org.au/schemas/hispid/5 http://www.chah.org.au/schemas/hispid/5/HISPID5.xsd
+	http://www.chah.org.au/schemas/hispid/5/extension http://www.chah.org.au/schemas/hispid/5/HISPID5extension.xsd" 
+	xmlns:hispid="http://www.chah.org.au/schemas/hispid/5/extension">
+	<DataSet>
+		<TechnicalContacts>
+			<TechnicalContact>
+				<Name>Gary Chapple</Name>
+				<Email>gary@example.com</Email>
+				<Address>Royal Botanic Gardens, Mrs Macquaries Road, Sydney NSW 2000, Australia</Address>
+			</TechnicalContact>
+		</TechnicalContacts>
+		<ContentContacts>
+			<ContentContact>
+				<Name>Gary Chapple</Name>
+				<Email>gary@example.com</Email>
+				<Phone>+61292318164</Phone>
+				<Address>Royal Botanic Gardens, Mrs Macquaries Road, Sydney NSW 2000, Australia</Address>
+			</ContentContact>
+		</ContentContacts>
+		<Metadata>
+			<Description>
+				<Representation language="en">
+					<Title>Herbarium exchange from NSW to CANB</Title>
+					<Details>Herbarium exchange data of various species from NSW to CANB</Details>
+				</Representation>
+			</Description>
+			<RevisionData>
+				<DateModified>1995-12-02T00:00:00Z</DateModified>
+			</RevisionData>
+			<Owners>
+				<Owner>
+					<Organisation>
+						<Name>
+							<Representation language="en">
+								<Text>National Herbarium of New South Wales (NSW)</Text>
+							</Representation>
+						</Name>
+					</Organisation>
+					<TelephoneNumbers>
+						<TelephoneNumber>
+							<Number>+61292517231</Number>
+							<Device>fax</Device>
+						</TelephoneNumber>
+					</TelephoneNumbers>
+				</Owner>
+			</Owners>
+		</Metadata>
+		<Units>
+			<Unit>
+				<SourceInstitutionID>NSW</SourceInstitutionID>
+				<SourceID>Database Name?</SourceID>
+				<UnitID>390839</UnitID>
+				<Identifications>
+					<Identification>
+						<Result>
+							<TaxonIdentified>
+								<HigherTaxa>
+									<HigherTaxon>
+										<HigherTaxonName>Loranthaceae</HigherTaxonName>
+										<HigherTaxonRank>familia</HigherTaxonRank>
+									</HigherTaxon>
+								</HigherTaxa>
+								
+								<ScientificName>
+									<FullScientificNameString>Amyema pendulum subsp. longifolium</FullScientificNameString>
+									<NameAtomised>
+										<Botanical>
+											<GenusOrMonomial>Amyema</GenusOrMonomial>
+											<FirstEpithet>pendulum</FirstEpithet>
+											<InfraspecificEpithet>longifolium</InfraspecificEpithet>
+											<Rank>subsp.</Rank>
+										</Botanical>
+									</NameAtomised>
+								</ScientificName>
+							</TaxonIdentified>
+						</Result>
+						<Identifiers>
+							<IdentifiersText>Wiecek, B.M.</IdentifiersText>
+						</Identifiers>
+						<Date>
+							<ISODateTimeBegin>1995</ISODateTimeBegin>
+						</Date>
+					</Identification>
+				</Identifications>
+				<Gathering>
+					<DateTime>
+						<ISODateTimeBegin>1901-03</ISODateTimeBegin>
+					</DateTime>
+					<Agents>
+						<GatheringAgent primarycollector="true">
+							<AgentText>Baeuerlen, W.</AgentText>
+						</GatheringAgent>
+					</Agents>
+					<LocalityText>Mount Bolton, Moura</LocalityText>
+					<Country>
+						<Name>Australia</Name>
+					</Country>
+					<NamedAreas>
+						<NamedArea>
+							<AreaClass>Australian Herbarium Region</AreaClass>
+							<AreaName>Central W. Slopes</AreaName>
+						</NamedArea>
+					</NamedAreas>
+					<SiteCoordinateSets>
+						<SiteCoordinates>
+							<CoordinatesLatLong>
+								<LongitudeDecimal>148.4</LongitudeDecimal>
+								<LatitudeDecimal>-33.25</LatitudeDecimal>
+							</CoordinatesLatLong>
+						</SiteCoordinates>
+					</SiteCoordinateSets>
+					<Biotope>
+						<Text>On Eucalyptus macrorrhyncha.</Text>
+					</Biotope>
+				</Gathering>
+				<Notes>Donated by Museum of Applied Arts &amp; Sciences, 1979.</Notes>
+				<UnitExtension>
+					<hispid:HispidGathering>
+						<hispid:CoordinatesDMS>
+							<hispid:LatitudeDegrees>33</hispid:LatitudeDegrees>
+							<hispid:LatitudeMinutes>15</hispid:LatitudeMinutes>
+							<hispid:LatitudeDirection>S</hispid:LatitudeDirection>
+							<hispid:LongitudeDegrees>148</hispid:LongitudeDegrees>
+							<hispid:LongitudeMinutes>24</hispid:LongitudeMinutes>
+							<hispid:LongitudeDirection>E</hispid:LongitudeDirection>
+						</hispid:CoordinatesDMS>
+						<hispid:PrimaryRecordingUnit>New South Wales</hispid:PrimaryRecordingUnit>
+					</hispid:HispidGathering>
+					<hispid:HispidUnit>
+						<hispid:ProvenanceType>accession of wild source</hispid:ProvenanceType>
+					</hispid:HispidUnit>
+				</UnitExtension>
+			</Unit>
+			<Unit>
+				<SourceInstitutionID>NSW</SourceInstitutionID>
+				<SourceID>Database Name?</SourceID>
+				<UnitID>248836</UnitID>
+				<Identifications>
+					<Identification>
+						<Result>
+							<TaxonIdentified>
+								<HigherTaxa>
+									<HigherTaxon>
+										<HigherTaxonName>Asclepiadaceae</HigherTaxonName>
+										<HigherTaxonRank>familia</HigherTaxonRank>
+									</HigherTaxon>
+								</HigherTaxa>
+								
+								<ScientificName>
+									<FullScientificNameString>Cynanchum pedunculatum</FullScientificNameString>
+									<NameAtomised>
+										<Botanical>
+											<GenusOrMonomial>Cynanchum</GenusOrMonomial>
+											<FirstEpithet>pedunculatum</FirstEpithet>
+										</Botanical>
+									</NameAtomised>
+								</ScientificName>
+							</TaxonIdentified>
+						</Result>
+						<Identifiers>
+							<IdentifiersText>Hill, K.D.</IdentifiersText>
+						</Identifiers>
+						<Date>
+							<ISODateTimeBegin>1992</ISODateTimeBegin>
+						</Date>
+					</Identification>
+				</Identifications>
+				<Gathering>
+					<DateTime>
+						<ISODateTimeBegin>1991-09-11</ISODateTimeBegin>
+					</DateTime>
+					<Agents>
+						<GatheringAgent primarycollector="true" sequence="1">
+							<AgentText>Wilson, Peter G.</AgentText>
+						</GatheringAgent>
+						<GatheringAgent primarycollector="false" sequence="2">
+							<AgentText>Rowe, R.</AgentText>
+						</GatheringAgent>
+					</Agents>
+					<LocalityText>Mount Lois.</LocalityText>
+					<Country>
+						<Name>Australia</Name>
+					</Country>
+					<NamedAreas>
+						<NamedArea>
+							<AreaClass>Australian Herbarium Region</AreaClass>
+							<AreaName>Fortescue</AreaName>
+						</NamedArea>
+					</NamedAreas>
+					<SiteCoordinateSets>
+						<SiteCoordinates>
+							<CoordinatesLatLong>
+								<LongitudeDecimal>117.733333</LongitudeDecimal>
+								<LatitudeDecimal>-33.1</LatitudeDecimal>
+								<CoordinateErrorDistanceInMeters>0.05</CoordinateErrorDistanceInMeters>
+							</CoordinatesLatLong>
+						</SiteCoordinates>
+					</SiteCoordinateSets>
+					<Altitude>
+						<MeasurementOrFactAtomised>
+							<LowerValue>800</LowerValue>
+							<UnitOfMeasurement>metres</UnitOfMeasurement>
+						</MeasurementOrFactAtomised>
+					</Altitude>
+					<Biotope>
+						<Text>Summit of mountain. Red loam derived from iron-rich shale.</Text>
+					</Biotope>
+					<Notes>Rare. Scrambler. Flowers white; fruit green.</Notes>
+				</Gathering>
+				<CollectorsFieldNumber>1031</CollectorsFieldNumber>
+				<UnitExtension>
+					<hispid:HispidGathering>
+						<hispid:CoordinatesDMS>
+							<hispid:LatitudeDegrees>22</hispid:LatitudeDegrees>
+							<hispid:LatitudeMinutes>6</hispid:LatitudeMinutes>
+							<hispid:LatitudeDirection>S</hispid:LatitudeDirection>
+							<hispid:LongitudeDegrees>117</hispid:LongitudeDegrees>
+							<hispid:LongitudeMinutes>44</hispid:LongitudeMinutes>
+							<hispid:LongitudeDirection>E</hispid:LongitudeDirection>
+						</hispid:CoordinatesDMS>
+						<hispid:PrimaryRecordingUnit>Western Australia</hispid:PrimaryRecordingUnit>
+					</hispid:HispidGathering>
+					<hispid:HispidUnit>
+						<hispid:ProvenanceType>accession of wild source</hispid:ProvenanceType>
+					</hispid:HispidUnit>
+				</UnitExtension>
+			</Unit>
+		</Units>
+	</DataSet>
+</DataSets>
