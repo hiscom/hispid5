@@ -60,13 +60,19 @@
 			<xs:documentation>Elements to allow missing or overly complex mappings of HISPID elements to ABCD</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="InfraGenericTaxon" type="InfraGenericTaxon" maxOccurs="unbounded"
-				minOccurs="0"> </xs:element>
+			<xs:element name="InfraGenericTaxa" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" name="InfraGenericTaxon"
+							type="InfraGenericTaxonType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="NameFormula" minOccurs="0" type="abcd:String">
 				<xs:annotation>
 					<xs:documentation>
 						The purpose of this element is to be able to
-						express complex name formulas invlolving
+						express complex name formulas involving
 						Hybrids. Really need some kind of nested
 						structure of TCS that allows parents of hybrids
 						to be indicated.
@@ -186,7 +192,7 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="InfraGenericTaxon">
+	<xs:complexType name="InfraGenericTaxonType">
 		<xs:sequence>
 			<xs:element name="InfraGenericName" type="abcd:Monomial"/>
 			<xs:element name="InfraGenericRank" type="InfraGenericRankEnum" minOccurs="0">
