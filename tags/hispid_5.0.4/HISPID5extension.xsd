@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.chah.org.au/schemas/hispid/5/extension"
+	targetNamespace="http://www.chah.org.au/schemas/hispid/5/extension"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	xmlns:abcd="http://www.tdwg.org/schemas/abcd/2.06"
+	xmlns:hispid="http://www.chah.org.au/schemas/hispid/5/extension" version="5">
+
+	<!-- import the ABCD schema -->
+	<xs:import namespace="http://www.tdwg.org/schemas/abcd/2.06" schemaLocation="ABCD_2.06b.xsd"/>
+
+	<!-- global elements to be used in ABCD within the extension elements,
+		e.g. UnitExtension. -->
+	<xs:element name="HispidGathering" type="hispid:HispidGatheringType"/>
+	<xs:element name="HispidIdentification" type="hispid:HispidIdentificationType"/>
+	<xs:element name="HispidUnit" type="hispid:HispidUnitType"/>
+
+	<!-- completely new Types that we will put in the extension -->
+
+	<xs:element name="HispidAccessions" type="HispidAccessionsType">
+		<xs:annotation>
+			<xs:documentation>Accession details.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="HispidGatheringType">
+		<xs:sequence>
+			<xs:element type="hispid:CoordinatesDMS" name="CoordinatesDMS" minOccurs="0"/>
+			<xs:element type="abcd:String" name="PrimaryRecordingUnit" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The Primary Recording Unit which is the highest order subdivision recognised by the Country (usually a State, Province or other comparable gegraphical region). </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PerCollector" type="abcd:PersonName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Better solution would be to extend the abcd:GatheringAgent to include PerCollector as an attribute.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Substrate" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The substrate or parent rock material in the habitat from which the specimen was collected</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SoilType" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Description of the the surface soil type from which the specimen was collected</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Vegetation" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Description of the the vegetation from which the specimen was collected</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="HispidIdentificationType">
+		<xs:annotation>
+			<xs:documentation>Elements to allow missing or overly complex mappings of HISPID elements to ABCD</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="InfraGenericTaxa" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" name="InfraGenericTaxon"
+							type="InfraGenericTaxonType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="NameFormula" minOccurs="0" type="abcd:String">
+				<xs:annotation>
+					<xs:documentation>
+						The purpose of this element is to be able to
+						express complex name formulas involving
+						Hybrids. Really need some kind of nested
+						structure of TCS that allows parents of hybrids
+						to be indicated.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HispidUnitType">
+		<xs:annotation>
+			<xs:documentation>Elements to allow missing or overly complex mappings of HISPID elements to ABCD</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element type="abcd:String" name="SecondaryCollectorIdentifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The collector's identifier applied by the secondary collector - much better would be if the collector's field number was an element of the GatheringAgent to allow recording of different collector's numbers for the same collection.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="NumberOfSheets" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The number of herbarium sheets, packets, boxes, etc., that make up the specimen represented by this record</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="FieldCollectionComponent" type="FieldCollectionComponentEnum"
+				minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>This is material types gathered at time of collection.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProvenanceType" type="ProvenanceTypeEnum" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The provenance of the accession of living material represented by the herbarium voucher.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PropagationHistory" type="PropagationHistoryEnum" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A code to indicate the nature of the production of the living plant material vouchered by the herbarium material, for use in association with ProvenanceType</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DonorType" type="DonorTypeEnum" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A code to indicate the type of donor from which the accession was obtained</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Frequency" minOccurs="0" type="abcd:String">
+				<xs:annotation>
+					<xs:documentation>
+						A description of the local abundance of the taxon represented by the record, without any perceived conservation status implied or provided, as recorded by the collector.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IntroductionAgency" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The method of introduction of non-native plants to the collection habitat</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="abcd:String">
+						<xs:enumeration value="introduced by humans"/>
+						<xs:enumeration value="introduced by natural means"/>
+						<xs:enumeration value="no information"/>
+						<xs:enumeration value="not applicable"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="LifeForm" type="abcd:String" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A description of the habit or life form of the specimen on which the record is based</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Phenology" type="PhenologyEnum" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The phenological state of the specimen represented by this record</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NonComputerisedDataFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						A boolean flag indicating presence of additional data available on the specimen and not represented in this record.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="HispidAccessionsType">
+		<xs:annotation>
+			<xs:documentation>A copy of the equivalent ABCD type SpecimenUnit/Accessions to allow for a child element Accession which can be repeated so that it is possible for a single specimen to have multiple accession numbers associated with it.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" name="Accession">
+				<xs:annotation>
+					<xs:documentation/>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AccessionDate" type="abcd:String">
+							<xs:annotation>
+								<xs:documentation>Textual statement of the date on which the accession was recorded.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="AccessionCatalogue" type="abcd:String">
+							<xs:annotation>
+								<xs:documentation>Identifier of an accessions catalogue or numbering scheme which contains the SpecimenUnit.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="AccessionNumber" type="abcd:String">
+							<xs:annotation>
+								<xs:documentation>The institutional number applied to an accession and recorded in the accessions register.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InfraGenericTaxonType">
+		<xs:sequence>
+			<xs:element name="InfraGenericName" type="abcd:Monomial"/>
+			<xs:element name="InfraGenericRank" type="InfraGenericRankEnum" minOccurs="0">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CoordinatesDMS">
+		<xs:annotation>
+			<xs:documentation>Site coordinates expressed in Degrees Minutes and Seconds. Note that there are new elements in CoordinatesLatLong for VerbatimLongitude and VerbatimLatitude as of 2.06c.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="LatitudeDegrees" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The degrees of latitude of the collection locality as quoted from the herbarium label or derived</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LatitudeMinutes" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The minutes of latitude of the collection locality as quoted from the herbarium label or derived</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LatitudeSeconds" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The seconds of latitude of the collection locality as quoted from the herbarium label or derived</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LatitudeDirection" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The abbreviated direction of latitude of the collection locality, relative to the equator, as quoted from the label or derived</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LongitudeDegrees" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The degrees of longitude of the collection locality as quoted from the herbarium label or derived</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LongitudeMinutes" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The minutes of longitude of the collection locality as quoted from the herbarium label or derived</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LongitudeSeconds" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The seconds of longitude of the collection locality as quoted from the herbarium label or derived</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LongitudeDirection" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The abbreviated direction of latitude of the collection locality, relative to Greenwich, as quoted from the label or derived</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="abcd:String" name="SpatialDatum" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Mathematical surface on which the mapping and coordinate system used for the geocodes of the record are based. Equivalent to "GeodeticDatum" in DwC Geospatial Extension v.1.4.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="abcd:String" name="AccuracyStatement" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Free text statement of degree of accuracy. May include indication that accuracy has deliberately been generalised, e.g. to protect sensitive data about protected species.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="xs:decimal" name="CoordinateErrorDistanceInMeters" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Maps to Darwin Core 2: Coordinate Precision. An estimate of how tightly the collecting locality was specified; expressed as a distance in meters corresponding to a radius around the Lat/Long coordinates. Use NULL where precision is unknown, cannot be estimated or is not applicable. Equivalent to "CoordinateUncertaintyInMeters" in DwC Geospatial Extension v. 1.4.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="abcd:String" name="CoordinateErrorMethod" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Verbatim statement of how the Coordinate Error was determined.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="abcd:spatialFitDataType" name="PointRadiusSpatialFit" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>[DwC Geospatial Extension v. 1.4: ] A measure of how well the circle defined by the coordinates and uncertainty match the original spatial representation, as a ratio of the area of the circle to the area of the original spatial representation. Legal values are 0, greater than or equal to 1, or undefined. A value of 1 is an exact match or 100% overlap. A value of 0 should be used if the given georeference does not completely contain the original representation. The PointRadiusSpatialFit is undefined if the original representation is a point without uncertainty and the given georeference is not that same point (without uncertainty). If both the original an the given georeference are the same point, the PointRadiusSpatialFit is 1. Detailed explanations with graphical examples can be found in the Guide to Best Practices for Georeferencing (Chapman and Wieczorek, eds. 2006).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="abcd:String" name="CoordinatesText" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Equivalent to "VerbatimCoordinates" in DwC Geospatial Extension v.1.4.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Type definitions that restrict ABCD or other types -->
+	<xs:simpleType name="CoordinateMethodEnum">
+		<xs:annotation>
+			<xs:documentation>An enumeration of Coordinate methods</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="collector"/>
+			<xs:enumeration value="compiler"/>
+			<xs:enumeration value="generalised arbitrary point"/>
+			<xs:enumeration value="automatically generated"/>
+			<xs:enumeration value="gps"/>
+			<xs:enumeration value="topo"/>
+			<xs:enumeration value="unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="NaturalOccurrenceEnum">
+		<xs:annotation>
+			<xs:documentation>An enumerated list of allowed values for the NaturalOccurrence element</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="native"/>
+			<xs:enumeration value="assumed to be native"/>
+			<xs:enumeration value="doubtfully native"/>
+			<xs:enumeration value="formerly native (extinct)"/>
+			<xs:enumeration value="not native"/>
+			<xs:enumeration value="recorded as native in error"/>
+			<xs:enumeration value="no information"/>
+			<xs:enumeration value="none of the above"/>
+			<xs:enumeration value="not applicable"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CultivatedOccurrenceEnum">
+		<xs:annotation>
+			<xs:documentation>An enumerated list of allowed values for the CultivatedOccurrence element</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="cultivated"/>
+			<xs:enumeration value="assumed to be cultivated"/>
+			<xs:enumeration value="doubtfully cultivated"/>
+			<xs:enumeration value="formerly cultivated (extinct)"/>
+			<xs:enumeration value="not cultivated"/>
+			<xs:enumeration value="recorded as cultivated in error"/>
+			<xs:enumeration value="no information"/>
+			<xs:enumeration value="none of the above"/>
+			<xs:enumeration value="not applicable"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DoubtfulFlagEnum">
+		<xs:annotation>
+			<xs:documentation>An enumeration to restrict the allowed values for the DoubtfulFlag element</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="possibly"/>
+			<xs:enumeration value="probably"/>
+			<xs:enumeration value="?"/>
+			<xs:enumeration value="not"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="NameAddendumEnum">
+		<xs:annotation>
+			<xs:documentation>An enumeration to restrict the allowed values for the NameAddendum element</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="agg."/>
+			<xs:enumeration value="s. lat."/>
+			<xs:enumeration value="s. str."/>
+		</xs:restriction>
+
+
+	</xs:simpleType>
+	<xs:simpleType name="TypeStatusEnum">
+		<xs:annotation>
+			<xs:documentation>An enumeration to restrict the allowed values for the TypeStatus element</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="epitype"/>
+			<xs:enumeration value="holotype"/>
+			<xs:enumeration value="isotype"/>
+			<xs:enumeration value="isolectotype"> </xs:enumeration>
+			<xs:enumeration value="isoneotype"> </xs:enumeration>
+			<xs:enumeration value="isoparatype"> </xs:enumeration>
+			<xs:enumeration value="isoparalectotype"> </xs:enumeration>
+			<xs:enumeration value="isosyntype"> </xs:enumeration>
+			<xs:enumeration value="kleptotype"> </xs:enumeration>
+			<xs:enumeration value="lectotype"> </xs:enumeration>
+			<xs:enumeration value="neotype"> </xs:enumeration>
+			<xs:enumeration value="paratype"> </xs:enumeration>
+			<xs:enumeration value="paralectotype"> </xs:enumeration>
+			<xs:enumeration value="syntype"> </xs:enumeration>
+			<xs:enumeration value="topotype"> </xs:enumeration>
+			<xs:enumeration value="type"> </xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Extensions to the ABCD schema - we might think about putting this in yet another namespace
+		so that we can filter this out to produce valid ABCD -->
+	<xs:simpleType name="PhenologyEnum">
+		<xs:annotation>
+			<xs:documentation>
+				An enumeration to restrict the allowed values for the Phenology element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="bisexual flowers"/>
+			<xs:enumeration value="buds"/>
+			<xs:enumeration value="female cones"/>
+			<xs:enumeration value="female flowers"/>
+			<xs:enumeration value="flowers"/>
+			<xs:enumeration value="male/female cones"/>
+			<xs:enumeration value="male cones"/>
+			<xs:enumeration value="male flowers"/>
+			<xs:enumeration value="fruit"/>
+			<xs:enumeration value="fruiting cones"/>
+			<xs:enumeration value="gametophyte"/>
+			<xs:enumeration value="sporophyte"/>
+			<xs:enumeration value="spore-bearing bodies"/>
+			<xs:enumeration value="fertile"/>
+			<xs:enumeration value="sterile"/>
+			<xs:enumeration value="leafless"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FieldCollectionComponentEnum">
+		<xs:annotation>
+			<xs:documentation>
+				An enumeration to restrict the allowed values for the FieldCollectionComponent element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="cutting"/>
+			<xs:enumeration value="cytological"/>
+			<xs:enumeration value="division"/>
+			<xs:enumeration value="dna"/>
+			<xs:enumeration value="photograph"/>
+			<xs:enumeration value="plant"/>
+			<xs:enumeration value="seed"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KindOfUnitEnum">
+		<xs:annotation>
+			<xs:documentation>
+				An enumerated list to restrict the allowd values for the KindOfUnit element. Note that we are not using abcdStringL as a base because this is a complex type and cannot be restricted.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="alcohol "/>
+			<xs:enumeration value="bark "/>
+			<xs:enumeration value="boxed"/>
+			<xs:enumeration value="cytological"/>
+			<xs:enumeration value="fruit"/>
+			<xs:enumeration value="illustration"/>
+			<xs:enumeration value="image"/>
+			<xs:enumeration value="other "/>
+			<xs:enumeration value="packet"/>
+			<xs:enumeration value="pollen"/>
+			<xs:enumeration value="print"/>
+			<xs:enumeration value="reference"/>
+			<xs:enumeration value="seed"/>
+			<xs:enumeration value="sheet"/>
+			<xs:enumeration value="slide"/>
+			<xs:enumeration value="transparency"/>
+			<xs:enumeration value="vertical"/>
+			<xs:enumeration value="wood"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ProvenanceTypeEnum">
+		<xs:annotation>
+			<xs:documentation>
+				An enumeration to restrict the allowed values for the ProvenanceType element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="propagule from wild source plant in cultivation"/>
+			<xs:enumeration value="accession not of wild source"/>
+			<xs:enumeration value="insufficient data to determine category"/>
+			<xs:enumeration value="accession of wild source"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PropagationHistoryEnum">
+		<xs:annotation>
+			<xs:documentation>
+				An enumeration to restrict the allowed values for the PropagationHistory element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="i"/>
+			<xs:enumeration value="s"/>
+			<xs:enumeration value="sa"/>
+			<xs:enumeration value="sb"/>
+			<xs:enumeration value="sc"/>
+			<xs:enumeration value="v"/>
+			<xs:enumeration value="va"/>
+			<xs:enumeration value="vb"/>
+			<xs:enumeration value="u"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DonorTypeEnum">
+		<xs:annotation>
+			<xs:documentation>
+				An enumeration to restrict the allowed values for the DonorType element
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="b"/>
+			<xs:enumeration value="e"/>
+			<xs:enumeration value="g"/>
+			<xs:enumeration value="he"/>
+			<xs:enumeration value="h"/>
+			<xs:enumeration value="i"/>
+			<xs:enumeration value="m"/>
+			<xs:enumeration value="n"/>
+			<xs:enumeration value="o"/>
+			<xs:enumeration value="r"/>
+			<xs:enumeration value="s"/>
+			<xs:enumeration value="v"/>
+			<xs:enumeration value="u"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IdentifierRoleEnum">
+		<xs:annotation>
+			<xs:documentation>
+			An enumeration to restrict the allowd values for the IdentifierRole element
+		</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="abcd:String">
+			<xs:enumeration value="conf."/>
+			<xs:enumeration value="cit."/>
+			<xs:enumeration value="det."/>
+			<xs:enumeration value="scrips."/>
+			<xs:enumeration value="vid."/>
+			<xs:enumeration value="upg."/>
+			<xs:enumeration value="tss."/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- This element replaced the extended HigherTaxonRankEnum that we provided in HISPID 5.0.2
+	because ABCD 2.06b was specific in the terms of HigherTaxonRank being for higher taxa, i.e.
+	those above the rank of genus. We have thus created a separate InfraGenericTaxon and
+	associated InfraGenericRankEnum to hold the extra values from HISPID 3. -->
+	<xs:simpleType name="InfraGenericRankEnum">
+		<xs:restriction base="xs:Name">
+			<xs:enumeration xml:lang="en" value="section"/>
+			<xs:enumeration xml:lang="en" value="subsection"/>
+			<xs:enumeration xml:lang="en" value="subgenus"/>
+			<xs:enumeration xml:lang="en" value="series"/>
+			<xs:enumeration xml:lang="en" value="subseries"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
