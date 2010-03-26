@@ -13,6 +13,11 @@ HISPID5extension.xsd document for the custom elements and types that are
 referenced in the relevant extension slots in ABCD. The extension schema itself
 references ABCD 2.06b in order to be able to override some types.
 
+=== BioCASE Support ===
+
+The file biocase/cmf_HISPID_5.xml is a concept mapping file that enables HISPID
+5 support in BioCASE (http://www.biocase.org/).
+
 == Examples ==
 
 There are a number of example XML instance documents that contain the same
