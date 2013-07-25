@@ -2210,6 +2210,9 @@
 											<dataElement name="DuplicatesDistributedTo" min="0" max="1" w3cType="string" namespace="http://www.tdwg.org/schemas/abcd/2.06b" path="/DataSets/DataSet/Units/Unit/SpecimenUnit/DuplicatesDistributedTo">
 												<annot>A free text field to note the known other recipients of a duplicate of the unit, preferrably in the form of a delimited list of SourceInstitionIDs.</annot>
 											</dataElement>
+											<dataElement name="Disposition" min="0" max="1" w3cType="string" namespace="http://www.tdwg.org/schemas/abcd/2.06b" path="/DataSets/DataSet/Units/Unit/SpecimenUnit/Disposition">
+												<annot>DwC curatorial extension r. 14: 'The current disposition of the cataloged item. Examples: "in collection", "missing", "voucher elsewhere", "duplicates elsewhere".'</annot>
+											</dataElement>
 										</childElements>
 									</dataElement>
 									<dataElement name="ObservationUnit" min="0" max="1" choiceElemId="2" namespace="http://www.tdwg.org/schemas/abcd/2.06b" choiceNodeId="4" path="/DataSets/DataSet/Units/Unit/ObservationUnit">
