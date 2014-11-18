@@ -38,8 +38,8 @@ HISPID 5 extensions used in place of their ABCD counterparts.
 Notes
 -----
 
-The latest schema can always be downloaded from the project site at
-https://code.google.com/p/hispid/.
+The latest schema can always be downloaded from the project site here in GitHub:
+https://github.com/hiscom/hispid5/.
 
 Errors in Eclipse's XML Schema editor like "cvc-elt.1: Cannot find the
 declaration of element 'DataSets'" can be addressed by following the
